@@ -37,7 +37,9 @@ class HomePage extends StatelessWidget {
           builder: (ctx, _, __) {
             print("Consumer Context");
             return Text(
-              "${Provider.of<CounterProvider>(ctx, listen: true).getCount()}",
+              // "${Provider.of<CounterProvider>(ctx, listen: true).getCount()}",
+              // listen is true by default but we can also use:
+              "${ctx.watch<CounterProvider>().getCount()}",
               style: TextStyle(fontSize: 25),
             );
           },
@@ -52,7 +54,10 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Provider.of<CounterProvider>(context, listen: false).incrementCount();
+          // listen MUST be false here since data is being changed, not observed
+          // Provider.of<CounterProvider>(context, listen: false).incrementCount();
+          // OR:
+          context.read<CounterProvider>().incrementCount();
         },
       ),
     );
