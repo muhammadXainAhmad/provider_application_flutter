@@ -20,6 +20,28 @@ class ListPage extends StatelessWidget {
                   return ListTile(
                     title: Text("${allData[index]["Name"]}"),
                     subtitle: Text("${allData[index]["Contact No"]}"),
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              context.read<ListMapProvider>().updateData({
+                                "Name": "Updated Contact",
+                                "Contact No": "987654321",
+                              }, index);
+                            },
+                            icon: Icon(Icons.edit),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              context.read<ListMapProvider>().deleteData(index);
+                            },
+                            icon: Icon(Icons.delete,color: Colors.red,),
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 },
               )

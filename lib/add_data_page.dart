@@ -13,7 +13,7 @@ class AddDataPage extends StatelessWidget {
         child: IconButton(
           onPressed: () {
             context.read<ListMapProvider>().addData({
-              "Name": "Xain",
+              "Name": "Contact Name",
               "Contact No": "12345679",
             });
           },
