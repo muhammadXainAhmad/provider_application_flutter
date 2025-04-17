@@ -5,7 +5,17 @@ import 'package:provider_application/list_map_provider.dart';
 import 'package:provider_application/list_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  // AddDataPage was not getting the provider
+  // Hence, we place it on parent of ListPage and AddDataPage
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CounterProvider()),
+        ChangeNotifierProvider(create: (context) => ListMapProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,13 +29,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MultiProvider(
+      home: ListPage(),
+
+      /*MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => CounterProvider()),
           ChangeNotifierProvider(create: (context) => ListMapProvider()),
         ],
         child: ListPage(),
-      ),
+      ),*/
       /*ChangeNotifierProvider(
         create: (_) => ListMapProvider(),
         child: ListPage(),
