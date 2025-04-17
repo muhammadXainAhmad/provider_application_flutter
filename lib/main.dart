@@ -19,13 +19,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ChangeNotifierProvider(
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => CounterProvider()),
+          ChangeNotifierProvider(create: (context) => ListMapProvider()),
+        ],
+        child: ListPage(),
+      ),
+      /*ChangeNotifierProvider(
         create: (_) => ListMapProvider(),
         child: ListPage(),
-        /*
         create: (context) => CounterProvider(),
-        child: HomePage(),*/
-      ),
+        child: HomePage(),
+      ),*/
     );
   }
 }
