@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_application/counter_provider.dart';
-import 'package:provider_application/list_map_provider.dart';
-import 'package:provider_application/list_page.dart';
+import 'package:provider_demo/counter_provider.dart';
+import 'package:provider_demo/list_map_provider.dart';
+import 'package:provider_demo/list_page.dart';
 
 void main() {
   // AddDataPage was not getting the provider

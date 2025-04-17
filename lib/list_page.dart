@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_application/add_data_page.dart';
-import 'package:provider_application/list_map_provider.dart';
+import 'package:provider_demo/add_data_page.dart';
+import 'package:provider_demo/list_map_provider.dart';
 
 class ListPage extends StatelessWidget {
   const ListPage({super.key});
