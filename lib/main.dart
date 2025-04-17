@@ -29,13 +29,25 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
+    print("Build Context");
     return Scaffold(
       appBar: AppBar(title: Text("Home")),
       body: Center(
-        child: Text(
-          "${Provider.of<CounterProvider>(context, listen: true).getCount()}",
-          style: TextStyle(fontSize: 25),
+        child: Consumer<CounterProvider>(
+          builder: (ctx, _, __) {
+            print("Consumer Context");
+            return Text(
+              "${Provider.of<CounterProvider>(ctx, listen: true).getCount()}",
+              style: TextStyle(fontSize: 25),
+            );
+          },
         ),
+        // context being used is same as build function
+        // this results in the entire page being rebuilt
+        // use consumer!!
+        /*Text(
+          "${Provider.of<CounterProvider>(context, listen: true).getCount()}",
+          style: TextStyle(fontSize: 25),),*/
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
